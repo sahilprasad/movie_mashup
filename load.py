@@ -38,7 +38,8 @@ class DataLoader(object):
         with codecs.open(input_file, encoding=self.encoding) as inp:
             data = inp.read()
 
-        counter = collections.Counter(data)
+        cleaned = self._clean(data)
+        counter = collections.Counter(cleaned)
         count_pairs = sorted(counter.items(), key=lambda x: -x[1])
 
         self.chars, _ = zip(*count_pairs)
@@ -51,6 +52,23 @@ class DataLoader(object):
 
         self.tensor = np.array(list(map(self.vocab.get, data)))
         np.save(tensor_file, self.tensor)
+
+    def _clean(self, data):
+        flag = False
+
+        cleaned = []
+        for char in data:
+            if char == ' ':
+                if not flag:
+                    cleaned.append(char)
+                    flag = True
+                else:
+                    pass
+            else:
+                flag = False
+                cleaned.append(char)
+
+        return cleaned
 
     def load(self, vocab_file, tensor_file):
         with open(vocab_file, 'wb') as voc:

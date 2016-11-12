@@ -20,10 +20,10 @@ def main():
     parser.add_argument('--layer_dim', type=int, help='number of layers')
     parser.add_argument('--batch_size', type=int, default=20,
         help='the size of each of the generated batches')
-    parser.add_argument('--seq_len', type=int, default=4, help='RNN seq length')
-    parser.add_argument('--epochs', type=int, default=3, help='the number of \
+    parser.add_argument('--seq_len', type=int, default=8, help='RNN seq length')
+    parser.add_argument('--epochs', type=int, default=15, help='the number of \
         epochs to use')
-    parser.add_argument('--save_every', type=int, default=2000, help='the frequency \
+    parser.add_argument('--save_every', type=int, default=5000, help='the frequency \
         at which to save the model to a designated save directory')
     parser.add_argument('--grad_clip', type=float, default=5., help='the value at \
         which to clip the gradient')
@@ -33,12 +33,13 @@ def main():
         chars_vocab.pkl, checkpoint, model.cpkt-*.')
     parser.add_argument('--decay_rate', type=float, default=0.97,
         help='decay rate value')
+    parser.add_argument('--input_file', type=str, default='input.txt', help='the input to the LSTM')
 
     args = parser.parse_args()
     train(args)
 
 def train(args):
-    loader = DataLoader(args.data, 'input.txt', 'vocab.pkl', 'data.npy', \
+    loader = DataLoader(args.data, args.input_file, 'vocab.pkl', 'data.npy', \
         args.batch_size, args.seq_len)
 
     print "loader initialized"
