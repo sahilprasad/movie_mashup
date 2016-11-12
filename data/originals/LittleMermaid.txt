@@ -1102,5 +1102,4 @@ All:     Now we can walk,
          Just you and me,
          And I can be,
          Part of your world.
-
-                THE END
+         
