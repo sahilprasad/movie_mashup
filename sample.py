@@ -15,7 +15,7 @@ def main():
         help='save dir for checkpoint-satisfying models')
     parser.add_argument('-n', type=int, default=1000,
         help='number of chars to sample')
-    parser.add_argument('--prime', type=str, default='Q',
+    parser.add_argument('--prime', type=str, default='The ',
         help='prime text')
     parser.add_argument('--sample', type=int, default=1,
         help='0 for max at each step, 1 to sample each step, 2 to sample on spaces')
