@@ -5,7 +5,7 @@ from tensorflow.python.ops import rnn_cell, seq2seq
 
 class LSTM(object):
 
-    DEFAULT_VOCAB_SIZE = 500000
+    DEFAULT_VOCAB_SIZE = 5000
     DEFAULT_CELL_SIZE = 128
     DEFAULT_LAYER_DIM = 3
     DEFAULT_BATCH_SIZE = 4
@@ -97,7 +97,7 @@ class LSTM(object):
     def sample(self, sess, chars, vocab, num=200, prime='The ', sampling_type=1):
         state = sess.run(self.cell.zero_state(1, tf.float32))
         for char in prime[:-1]:
-            x = np.zeros(1, 1)
+            x = np.zeros((1, 1))
             x[0, 0] = vocab[char]
             feed = {self.inputs: x, self.initial_state: state}
             [state] = sess.run([self.final_state], feed)
