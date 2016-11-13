@@ -1,28 +1,29 @@
-#window .line {
+#window1 .line {
 	font-size: 20px;
 }
 
-#window #or {
+#window1 #or {
 	font-size:35px;
 	font-weight: bold;
 }
 
-#window #vert-align {
+#window1 #vert-align {
 	text-align:center;
 	font-family: arial;
 }
 
-#window img {
+#window1 img {
 	padding:20px;
 }
 
-#window #movie_pictures {
+#window1 #movie_pictures {
 	padding-left:4%;
 	padding-top:20%;
 }
 
-#window {
+#window1 {
+	height:100%;
 	margin:auto;
-	margin-top:-15%;
+	margin-top:-21%;
 	background-image: url("background.jpg");
 }
