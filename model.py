@@ -1,12 +1,14 @@
 import tensorflow as tf
 import numpy as np
 
+import random
+
 from tensorflow.python.ops import rnn_cell, seq2seq
 
 class LSTM(object):
 
     DEFAULT_VOCAB_SIZE = 5000
-    DEFAULT_CELL_SIZE = 128
+    DEFAULT_CELL_SIZE = 512
     DEFAULT_LAYER_DIM = 3
     DEFAULT_BATCH_SIZE = 4
     DEFAULT_SEQ_LEN = 4
@@ -94,11 +96,14 @@ class LSTM(object):
             name='optimizer')
         self.train_op = self.optimizer.apply_gradients(zip(grads, tvars), name='train_op')
 
-    def sample(self, sess, chars, vocab, num=200, prime='The ', sampling_type=1):
+    def sample(self, sess, words, vocab, num=200, prime='Once upon a time', sampling_type=1):
         state = sess.run(self.cell.zero_state(1, tf.float32))
-        for char in prime[:-1]:
+        if not prime or not prime.strip():
+            prime = random.choice(list(vocab.keys()))
+
+        for word in prime[:-1].split():
             x = np.zeros((1, 1))
-            x[0, 0] = vocab[char]
+            x[0, 0] = vocab.get(word, 0)
             feed = {self.inputs: x, self.initial_state: state}
             [state] = sess.run([self.final_state], feed)
 
@@ -108,11 +113,12 @@ class LSTM(object):
             return int(np.searchsorted(t, np.random.rand(1) * s))
 
         ret = prime
-        char = prime[-1]
+        word = prime.split()[-1]
 
         for n in range(num):
             x = np.zeros((1, 1))
-            x[0, 0] = vocab[char]
+            x[0, 0] = vocab.get(word, 0)
+
             feed = {self.inputs: x, self.initial_state: state}
             [probs, state] = sess.run([self.probs, self.final_state], feed)
 
@@ -121,15 +127,15 @@ class LSTM(object):
             if sampling_type == 0:
                 sample = np.argmax(p)
             elif sampling_type == 2:
-                if char == ' ':
+                if word == '\n':
                     sample = weighted_pick(p)
                 else:
                     sample = np.argmax(p)
             else:
                 sample = weighted_pick(p)
 
-            pred = chars[sample]
-            ret += pred
-            char = pred
+            pred = words[sample]
+            ret += ' ' + pred
+            word = pred
 
         return ret

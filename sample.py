@@ -15,7 +15,7 @@ def main():
         help='save dir for checkpoint-satisfying models')
     parser.add_argument('-n', type=int, default=1000,
         help='number of chars to sample')
-    parser.add_argument('--prime', type=str, default='The ',
+    parser.add_argument('--prime', type=str, default='Once upon a time',
         help='prime text')
     parser.add_argument('--sample', type=int, default=1,
         help='0 for max at each step, 1 to sample each step, 2 to sample on spaces')
@@ -28,7 +28,7 @@ def sample(args):
         saved_args = cPickle.load(config)
 
     with open(os.path.join(args.save, 'chars_vocab.pkl'), 'rb') as vocab_f:
-        chars, vocab = cPickle.load(vocab_f)
+        words, vocab = cPickle.load(vocab_f)
 
     model = LSTM(saved_args, test=True)
 
@@ -42,7 +42,7 @@ def sample(args):
 
         if ckpt and ckpt.model_checkpoint_path:
             saver.restore(sess, ckpt.model_checkpoint_path)
-            print(model.sample(sess, chars, vocab, args.n, prime=args.prime,
+            print(model.sample(sess, words, vocab, args.n, prime=args.prime,
                 sampling_type=args.sample))
 
 if __name__ == '__main__':

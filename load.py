@@ -16,15 +16,9 @@ class DataLoader(object):
         self.seq_len = seq_len
         self.encoding = encoding
 
-        print "vocab: " + str(os.path.exists(vocab_file))
-        print "tensor: " + str(os.path.exists(tensor_file))
-
         input_file = os.path.join(direc, input_file)
         vocab_file = os.path.join(direc, vocab_file)
         tensor_file = os.path.join(direc, tensor_file)
-
-        print "vocab: " + str(os.path.exists(vocab_file))
-        print "tensor: " + str(os.path.exists(tensor_file))
 
         if not (os.path.exists(vocab_file) and os.path.exists(tensor_file)):
             self.process(input_file, vocab_file, tensor_file)
@@ -36,46 +30,34 @@ class DataLoader(object):
 
     def process(self, input_file, vocab_file, tensor_file):
         with codecs.open(input_file, encoding=self.encoding) as inp:
-            data = inp.read()
+            words = []
+            for line in inp:
+                line = line.strip().split()
+                for word in line:
+                    words.append(word)
 
-        cleaned = self._clean(data)
-        counter = collections.Counter(cleaned)
+        counter = collections.Counter(words)
         count_pairs = sorted(counter.items(), key=lambda x: -x[1])
 
-        self.chars, _ = zip(*count_pairs)
-        self.vocab_size = len(self.chars)
+        self.words, _ = zip(*count_pairs)
+        self.vocab_size = len(self.words)
 
-        self.vocab = dict(zip(self.chars, range(len(self.chars))))
+        self.vocab = dict(zip(self.words, range(len(self.words))))
+        self.reverse = dict(zip(self.vocab.values(), self.vocab.keys()))
 
         with open(vocab_file, 'wb') as voc:
-            cPickle.dump(self.chars, voc)
+            cPickle.dump(self.words, voc)
 
-        self.tensor = np.array(list(map(self.vocab.get, data)))
+        self.tensor = np.array(list(map(self.vocab.get, words)))
         np.save(tensor_file, self.tensor)
-
-    def _clean(self, data):
-        flag = False
-
-        cleaned = []
-        for char in data:
-            if char == ' ':
-                if not flag:
-                    cleaned.append(char)
-                    flag = True
-                else:
-                    pass
-            else:
-                flag = False
-                cleaned.append(char)
-
-        return cleaned
 
     def load(self, vocab_file, tensor_file):
         with open(vocab_file, 'wb') as voc:
-            self.chars = cPickle.load(voc)
+            self.words = cPickle.load(voc)
 
-        self.vocab_size = len(self.chars)
-        self.vocab = dict(zip(self.chars, range(len(self.chars))))
+        self.vocab_size = len(self.words)
+        self.vocab = dict(zip(self.words, range(len(self.words))))
+        self.reverse = dict(zip(self.vocab.values(), self.vocab.keys()))
 
         self.tensor = np.load(tensor_file)
 

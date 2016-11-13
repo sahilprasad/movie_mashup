@@ -18,12 +18,12 @@ def main():
         help='the location to save the model at certain checkpoints')
     parser.add_argument('--cell_size', type=int, help='the size of the rnn cell')
     parser.add_argument('--layer_dim', type=int, help='number of layers')
-    parser.add_argument('--batch_size', type=int, default=20,
+    parser.add_argument('--batch_size', type=int, default=50,
         help='the size of each of the generated batches')
-    parser.add_argument('--seq_len', type=int, default=8, help='RNN seq length')
-    parser.add_argument('--epochs', type=int, default=15, help='the number of \
+    parser.add_argument('--seq_len', type=int, default=5, help='RNN seq length')
+    parser.add_argument('--epochs', type=int, default=5, help='the number of \
         epochs to use')
-    parser.add_argument('--save_every', type=int, default=5000, help='the frequency \
+    parser.add_argument('--save_every', type=int, default=2000, help='the frequency \
         at which to save the model to a designated save directory')
     parser.add_argument('--grad_clip', type=float, default=5., help='the value at \
         which to clip the gradient')
@@ -54,7 +54,7 @@ def train(args):
             cPickle.dump(args, conf)
 
         with open(os.path.join(args.save, 'chars_vocab.pkl'), 'wb') as voc:
-            cPickle.dump((loader.chars, loader.vocab), voc)
+            cPickle.dump((loader.words, loader.vocab), voc)
 
 
     model = LSTM(args)
@@ -77,7 +77,7 @@ def train(args):
                     start = time.time()
 
                     x, y = loader.next_batch()
-                    feed = {model.inputs: x, model.targets: y} # TODO: check validity
+                    feed = {model.inputs: x, model.targets: y}
 
                     for i, (c, h) in enumerate(model.initial_state):
                         feed[c] = state[i].c
