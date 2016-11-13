@@ -18,12 +18,12 @@ def main():
         help='the location to save the model at certain checkpoints')
     parser.add_argument('--cell_size', type=int, help='the size of the rnn cell')
     parser.add_argument('--layer_dim', type=int, help='number of layers')
-    parser.add_argument('--batch_size', type=int, default=50,
+    parser.add_argument('--batch_size', type=int, default=32,
         help='the size of each of the generated batches')
-    parser.add_argument('--seq_len', type=int, default=5, help='RNN seq length')
+    parser.add_argument('--seq_len', type=int, default=10, help='RNN seq length')
     parser.add_argument('--epochs', type=int, default=5, help='the number of \
         epochs to use')
-    parser.add_argument('--save_every', type=int, default=2000, help='the frequency \
+    parser.add_argument('--save_every', type=int, default=10000, help='the frequency \
         at which to save the model to a designated save directory')
     parser.add_argument('--grad_clip', type=float, default=5., help='the value at \
         which to clip the gradient')
