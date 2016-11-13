@@ -8,8 +8,8 @@ from tensorflow.python.ops import rnn_cell, seq2seq
 class LSTM(object):
 
     DEFAULT_VOCAB_SIZE = 5000
-    DEFAULT_CELL_SIZE = 512
-    DEFAULT_LAYER_DIM = 3
+    DEFAULT_CELL_SIZE = 256
+    DEFAULT_LAYER_DIM = 2
     DEFAULT_BATCH_SIZE = 4
     DEFAULT_SEQ_LEN = 4
     DEFAULT_GRAD_CLIP = 5
