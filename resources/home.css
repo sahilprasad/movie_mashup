@@ -1,29 +1,32 @@
-#window1 .line {
-	font-size: 20px;
+body {
+	background-image: url("background.jpg");
+}
+#window1 {
+	height:200%;
+	margin:auto;
+	margin-top:-21%;
+	padding-bottom:10%;
+	margin-left:-2%;
+	margin-right:-2%;
 }
 
-#window1 #or {
-	font-size:35px;
-	font-weight: bold;
-}
-
-#window1 #vert-align {
-	text-align:center;
+#window1 h3 {
 	font-family: arial;
+	font-size:24pt;
+	text-align: center;
+}
+
+#window1 #movie_pictures {
+	padding-left:25px;
+	padding-top:20%;
 }
 
 #window1 img {
 	padding:20px;
 }
-
-#window1 #movie_pictures {
-	padding-left:4%;
-	padding-top:20%;
-}
-
-#window1 {
-	height:100%;
-	margin:auto;
-	margin-top:-21%;
-	background-image: url("background.jpg");
+#window1 p {
+	font-family:arial;
+	padding-left:15%;
+	padding-right:15%;
+	font-size:14pt;
 }

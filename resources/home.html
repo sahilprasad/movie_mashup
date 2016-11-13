@@ -1,47 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Movie-MashUp</title>
+	<title>Scriptly's</title>
 	<link rel="stylesheet" type="text/css" href="header.css"/>
 	<link rel="stylesheet" type="text/css" href="home.css" />
-
+	<link rel="stylesheet" type="text/css" href="form.css" />
+	<link rel="shortcut icon" href="favicon.ico" />
+	<script src="home.js"></script>
+<!--GoT, Silicon Valley, Sherlock, Mr. Robot, Walking Dead, Supernatural -->
 </head>
 	<body>
 		<div id="header_wrapper">
-			<h1 id="title">Movie-MashUp</h1>
-			<h2 id="subtitle">Create your own movies!</h2>
+			<h1 id="title">Scriptly's <i>Believe It or Not!</i></h1>
+			<h2 id="subtitle">Generate your favorite shows before the next season</h2>
+			<a id="generate" href="#show-form">Go to Scriptly</a>
 		</div>
 		<div id="window">
 			<div id="window1">
-				<div id="movie_pictures">
-					<img src="moviepic_1.jpg" alt="movie poster one">
-					<img src="moviepic_2.jpg" alt="movie poster two">
-					<img src="moviepic_3.jpg" alt="movie poster two">
-					<img src="moviepic_4.jpg" alt="movie poster two">
-					<img src="moviepic_6.jpg" alt="movie poster two">
-					<img src="moviepic_7.jpg" alt="movie poster two">
+				<div id="show_pictures"><!--
+					<img src="showpic_1.jpg" height="250px" width="175px" alt="movie poster one">
+					<img src="showpic_2.jpg" height="250px" width="175px" alt="movie poster two">
+					<img src="showpic_3.jpg" height="250px" width="175px" alt="movie poster two">
+					<img src="showpic_4.jpg" height="250px" width="175px" alt="movie poster two">
+					<img src="showpic_5.jpg" height="250px" width="175px" alt="movie poster two">
+					<img src="showpic_6.jpg" height="250px" width="175px" alt="movie poster two">-->
 				</div>
 
 				<span id="vert-align">
-					<p id="one" class="line">
-						Choose a MashUp from our presets
+					<h3>Tired of waiting for your favorite shows?</h3><br>
+					<p>
+						&nbsp;&nbsp;&nbsp;&nbsp;Watching shows live would be great, if it didn't take so long for the writers to create more episodes.  If only there was a way to continue binge-watching a show before the next season.
 					</p>
-					<p id="or">
-						OR
+
+					<p>
+						&nbsp;&nbsp;&nbsp;&nbsp;Well, the engineers at Scriptly have found a way for you satisfy your televison cravings before the next season!  Using AI technology, we have discovered a way to generate new TV episodes using the old out-dated episodes.  Our state-of-the-art episode generator then writes a new episode based on a start you give!
 					</p>
-					<p class="line" id="two">
-						Create your own!
-					</p>
+
+
 				</span>
 			</div>
 
-			<form id="movie-form">
-				Movie One: 
-				<input type="text" name="movieTitle1"><br>
-				Movie Two: 
-				<input type="text" name="movieTitle2"><br>
-				<input type="submit" value="Mash!">
+			<div id="form-div">
+			<h3 id="Scriptly">Generate Scriptly</h3>
+			<p> To generate your script, give the name of the full name of the show and the first word of your script.  If you do not start the first word of the script, it will start with "once upon a time". (Hint: try giving it a space first for some random fun!)
+			</p>
+			<form method="get" action="result.html" id="show-form">
+				<div id="text-form">
+						<label for="showTitle">Show's Name:</label>
+						<input class="text" type="text" name="showTitle">
+					</div>
+					<div>
+						<label for="prime">Priming Word: </label>
+						<input class="text" type="text" name="prime">
+				</div>
+				<div>
+					<input id="submit" type="submit" value="Go!">
+				</div>
 			</form>
+		</div>
 		</div>
 	</body>
 </html>

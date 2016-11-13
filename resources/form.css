@@ -1,0 +1,28 @@
+#form-div {
+	position:absolute;
+	left:-1000px;
+	top:-1000px;
+	margin-bottom:0;
+}
+
+#show-form {
+	display:inline-block;
+	margin-right: auto;
+	text-align:left;
+}
+#form-div h3 {
+	font-family:arial;
+	font-size:24pt;
+}
+#form-div p {
+	font-family:arial;
+	padding-left:15%;
+	padding-right:15%;
+	padding-top: 20px;
+	padding-bottom: 30px;
+}
+
+label {
+	font-family:arial;
+}
+
