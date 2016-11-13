@@ -34,7 +34,7 @@ class DataLoader(object):
             for line in inp:
                 line = line.strip().split()
                 for word in line:
-                    words.append(word)
+                    words.append(word.lower())
 
         counter = collections.Counter(words)
         count_pairs = sorted(counter.items(), key=lambda x: -x[1])
