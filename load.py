@@ -29,12 +29,15 @@ class DataLoader(object):
         self.reset()
 
     def process(self, input_file, vocab_file, tensor_file):
+        cunter = 0
         with codecs.open(input_file, encoding=self.encoding) as inp:
             words = []
             for line in inp:
                 line = line.strip().split()
                 for word in line:
+                    cunter = cunter + 1
                     words.append(word.lower())
+        print(cunter)
 
         counter = collections.Counter(words)
         count_pairs = sorted(counter.items(), key=lambda x: -x[1])

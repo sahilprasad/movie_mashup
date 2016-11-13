@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Scriptly's</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='header.css') }}"/>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='form.css') }}" />
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+	<script src="{{ url_for('static', filename='home.js') }}"></script>
+<!--GoT, Silicon Valley, Sherlock, Mr. Robot, Walking Dead, Supernatural -->
+</head>
+	<body>
+		<div id="header_wrapper">
+			<h1 id="title">Scriptly's <i>Believe It or Not!</i></h1>
+			<h2 id="subtitle">Generate your favorite shows before the next season</h2>
+			<a id="generate" href="#show-form">Go to Scriptly</a>
+		</div>
+		<div id="window">
+			<div id="window1">
+				<div id="show_pictures"><!--
+					<img src="showpic_1.jpg" height="250px" width="175px" alt="movie poster one">
+					<img src="showpic_2.jpg" height="250px" width="175px" alt="movie poster two">
+					<img src="showpic_3.jpg" height="250px" width="175px" alt="movie poster two">
+					<img src="showpic_4.jpg" height="250px" width="175px" alt="movie poster two">
+					<img src="showpic_5.jpg" height="250px" width="175px" alt="movie poster two">
+					<img src="showpic_6.jpg" height="250px" width="175px" alt="movie poster two">-->
+				</div>
+
+				<span id="vert-align">
+					<h3>Tired of waiting for your favorite shows?</h3><br>
+					<p>
+						&nbsp;&nbsp;&nbsp;&nbsp;Watching shows live would be great, if it didn't take so long for the writers to create more episodes.  If only there was a way to continue binge-watching a show before the next season.
+					</p>
+
+					<p>
+						&nbsp;&nbsp;&nbsp;&nbsp;Well, the engineers at Scriptly have found a way for you satisfy your televison cravings before the next season!  Using AI technology, we have discovered a way to generate new TV episodes using the old out-dated episodes.  Our state-of-the-art episode generator then writes a new episode based on a start you give!
+					</p>
+
+
+				</span>
+			</div>
+
+			<div id="form-div">
+			<h3 id="Scriptly">Generate Scriptly</h3>
+			<p> To generate your script, give the name of the full name of the show and the first word of your script.  If you do not start the first word of the script, it will start with "once upon a time". (Hint: try giving it a space first for some random fun!)
+			</p>
+			<form method="get" action="/action" id="show-form">
+				<div id="text-form">
+						<label for="showTitle">Show's Name:</label>
+						<input class="text" type="text" name="showTitle">
+					</div>
+					<div>
+						<label for="prime">Priming Word: </label>
+						<input class="text" type="text" name="prime">
+				</div>
+				<div>
+					<input id="submit" type="submit" value="Go!">
+				</div>
+			</form>
+		</div>
+		</div>
+	</body>
+</html>

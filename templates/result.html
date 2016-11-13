@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+	<title>Scriptly's Results</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='header.css') }}"/>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='loader.css') }}"/>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='result.css') }}"/>
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+</head>
+<body>
+	<div id="header_wrapper">
+			<h1 id="title">Scriptly's <i>Believe It or Not!</i></h1>
+			<h2 id="subtitle">Generate your favorite shows before the next season</h2>
+		</div>
+	<div id="loader_div" class="loader">
+    	<span class="dot"></span>
+    	<span class="dot"></span>
+    	<span class="dot"></span>
+    	<p id="loading_message"></p>
+    </div>
+    <div class="result">
+    	<p id="result_message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec tristique velit, vel ultrices nisl. Aenean sit amet turpis vel lacus lacinia dictum. Praesent rutrum, enim vitae finibus commodo, urna tortor pharetra metus, a tempor mauris odio non tellus. Quisque nisi nisl, sollicitudin eu sem in, blandit mollis ex. Curabitur aliquam ipsum quis lacinia fermentum. Etiam imperdiet accumsan tortor, id ornare eros tincidunt eu. Aenean scelerisque, augue non lobortis iaculis, sapien justo malesuada mi, id rutrum lorem felis a nisi. Nullam vel lorem odio. Praesent ultrices nec ipsum non consectetur. Praesent pharetra condimentum eros. Quisque magna metus, mollis ullamcorper aliquet vel, commodo et ligula. Mauris semper nisl at orci hendrerit, et tincidunt nisl pulvinar. Nullam et pellentesque nisi, non dapibus augue. Cras pretium quis elit et pharetra. Duis blandit ligula sapien, vitae mollis dui sagittis ac. Etiam suscipit in dolor ornare finibus.
+
+Aenean quis magna venenatis, finibus velit ultricies, malesuada quam. Quisque sit amet sollicitudin felis. Maecenas ullamcorper elit a volutpat iaculis. Fusce sed sem tempus turpis feugiat tincidunt non id lorem. Nullam eget laoreet diam. Etiam ornare consequat felis, id bibendum ligula lobortis pellentesque. Cras ornare in dolor at laoreet. Nulla augue lorem, lobortis vel libero non, accumsan semper mi. Pellentesque ac eros lobortis, sodales lorem euismod, condimentum lectus.
+
+Praesent ac mattis nibh, varius sollicitudin felis. Aenean tincidunt lectus at nunc malesuada cursus. Morbi tellus ante, volutpat ut nisl eu, pharetra mattis nunc. Morbi posuere enim scelerisque vulputate pulvinar. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec fermentum sem sed posuere consequat. Vivamus commodo orci sit amet tellus tempus luctus. Nullam posuere lacinia orci, a pulvinar sapien placerat vitae.
+
+Nam eu gravida nisl, ut posuere dui. Donec euismod augue magna, ac condimentum velit malesuada non. Ut et metus vulputate tortor gravida ullamcorper. Phasellus eget odio eros. In lobortis eros risus, ut pharetra quam volutpat quis. Nunc et leo ut diam pharetra rhoncus in vitae urna. Pellentesque cursus euismod laoreet. Nullam sit amet justo eget nisl efficitur ullamcorper vitae at nulla. Donec quis hendrerit magna.
+
+Proin turpis libero, consectetur non lorem eget, iaculis eleifend nibh. Pellentesque risus metus, mattis sed justo a, finibus eleifend arcu. Integer mollis felis quis convallis vestibulum. Proin in eros magna. Pellentesque lacinia a odio vitae sodales. Cras lorem quam, sagittis sit amet pretium vel, sodales vestibulum magna. Praesent elementum auctor tortor vitae ultricies.</p>
+
+	<button onclick="myFunction() ">click</button>
+
+<script>
+function myFunction() {
+	var els = document.getElementsByClassName('dot')
+	Array.prototype.forEach.call(els, function(el) {
+		el.style.display = "hidden"
+		el.className = ""
+	});
+	Array.prototype.forEach.call(els, function(el) {
+		el.style.display = "hidden"
+		el.className = ""
+	});
+}
+</script>
+</body>
